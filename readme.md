@@ -58,18 +58,106 @@ You are expected to set up a simple system where:
 
 ---
 
-### 📝 Submission Instructions
+# 🚀 DevOps Assignment – NGINX Reverse Proxy with Docker Compose
 
-1. Upload your project to GitHub or GitLab.
-2. Include a short `README.md` with:
+This project demonstrates a containerized microservice setup using Docker Compose. It includes two backend services written in Go and Python Flask, both routed through an NGINX reverse proxy on port `8080`.
 
-   * Setup instructions
-   * How routing works
-   * Any bonus you implemented
-3. Deadline: **1 week**
-4. Bonus points for:
+---
 
-   * Logging clarity
-   * Clean and modular Docker setup
-   * Healthcheck or automated test script
+## 📁 Project Structure
+
+```
+
+.
+├── docker-compose.yml
+├── nginx/
+│   ├── Dockerfile
+│   └── nginx.conf
+├── service\_1/
+│   ├── Dockerfile
+│   ├── main.go
+├── service\_2/
+│   ├── Dockerfile
+│   ├── app.py
+│   └── pyproject.toml
+└── README.md
+
+````
+
+---
+
+## 🔧 Setup Instructions
+
+### Prerequisites:
+- Docker
+- Docker Compose
+
+### Run the project:
+
+```bash
+docker compose up --build
+````
+
+---
+
+## 🌐 NGINX Reverse Proxy (localhost:8080)
+
+| Endpoint          | Description   | Backend Service     |
+| ----------------- | ------------- | ------------------- |
+| `/service1/ping`  | Health check  | Go (port 8001)      |
+| `/service1/hello` | Hello message | Go (port 8001)      |
+| `/service2/ping`  | Health check  | Python Flask (8002) |
+| `/service2/hello` | Hello message | Python Flask (8002) |
+
+---
+
+## 🧪 Testing the Services
+
+```bash
+curl http://localhost:8080/service1/ping
+curl http://localhost:8080/service1/hello
+curl http://localhost:8080/service2/ping
+curl http://localhost:8080/service2/hello
+```
+
+Or open them in your browser.
+
+---
+
+## 📦 Features
+
+* ✅ NGINX reverse proxy container
+* ✅ Dockerized Go & Python services
+* ✅ Path-based routing via NGINX
+* ✅ Healthchecks for both services
+* ✅ Logging of all incoming requests in NGINX
+* ✅ Single network using Docker bridge
+
+---
+
+## 💡 Bonus (Implemented)
+
+* Logging with timestamp and request path in `nginx.conf`
+* Healthcheck routes to auto-verify service readiness
+* Clean Docker structure (Dockerfile for each service)
+
+---
+
+## 📤 Submission
+
+* ✅ Code pushed to GitHub: [https://github.com/harshkumar35/Project-submission](https://github.com/harshkumar35/Project-submission)
+
+---
+
+## 👨‍💻 Author
+
+**Harsh Kumar**
+B.Tech CSBS, GGITS
+📧 [harshku612810@gmail.com](mailto:harshku612810@gmail.com)
+🌐 [LinkedIn](https://www.linkedin.com/in/harshk251103/)
+
+---
+
+🎯 Thank you! This concludes the assignment.
+
 
