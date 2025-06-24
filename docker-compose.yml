@@ -20,12 +20,13 @@ services:
     ports:
       - "8002:8002"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8002/ping"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8002/ping')"]
       interval: 10s
       timeout: 5s
       retries: 3
     networks:
       - app_net
+
 
   nginx:
     build: ./nginx
